@@ -1,0 +1,18 @@
+.friendItemRow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.friendImg {
+    background-color: green;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}
+
+.friendName {
+    color: white;
+    font-size: 25px;
+}

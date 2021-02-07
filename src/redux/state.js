@@ -5,6 +5,13 @@ const state = {
       { id: 2, message: "I know how to use prop`s!", likeCount: 15 },
       { id: 3, message: "It's my first post", likeCount: 25 },
     ],
+    addNewPosts: function (postId, messageText, likeCount) {
+      this.posts.push({
+        id: postId,
+        message: messageText,
+        likeCount: likeCount,
+      });
+    },
   },
   dialogsPage: {
     dialogs: [
@@ -22,6 +29,9 @@ const state = {
       { id: 4, message: "Yooo" },
       { id: 4, message: "Yooo" },
     ],
+  },
+  navBar: {
+    friendsName: [{ name: "Andrew" }, { name: "Sasha" }, { name: "Vika" }],
   },
 };
 

@@ -12,3 +12,16 @@
 .item a.activeLink {
     color: gold;
 }
+
+.friendsBlock {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 50px;
+    color: white;
+}
+
+.friendsBlockRow {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
