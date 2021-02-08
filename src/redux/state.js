@@ -50,7 +50,7 @@ export let updateNewPostText = (text) => {
   renderEntireTree(state);
 };
 
-export const addMessage = (state) => {
+export const addMessage = () => {
   const message = {
     id: 5,
     message: state.dialogsPage.textAreaMessage,
