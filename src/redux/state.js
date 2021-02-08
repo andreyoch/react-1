@@ -1,5 +1,6 @@
-import { renderEntireTree } from "../render";
-
+let renderEntireTree = () => {
+  console.log("State was changed");
+};
 const state = {
   profilePage: {
     posts: [
@@ -7,7 +8,7 @@ const state = {
       { id: 2, message: "I know how to use prop`s!", likeCount: 15 },
       { id: 3, message: "It's my first post", likeCount: 25 },
     ],
-    newPostText: "It Kamasutra!",
+    newPostText: "1",
   },
   dialogsPage: {
     dialogs: [
@@ -25,24 +26,47 @@ const state = {
       { id: 4, message: "Yooo" },
       { id: 4, message: "Yooo" },
     ],
+    textAreaMessage: "",
   },
   navBar: {
     friendsName: [{ name: "Andrew" }, { name: "Sasha" }, { name: "Vika" }],
   },
 };
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
   let newPost = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likeCount: 0,
   };
 
   state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = "";
   renderEntireTree(state);
 };
-export default state;
 
-export let showPostMessage = (text) => {
-  state.profilePage.newPostText += text;
+export let updateNewPostText = (text) => {
+  state.profilePage.newPostText = text;
+  renderEntireTree(state);
 };
+
+export const addMessage = (state) => {
+  const message = {
+    id: 5,
+    message: state.dialogsPage.textAreaMessage,
+  };
+  state.dialogsPage.messages.push(message);
+  state.dialogsPage.textAreaMessage = "";
+
+  renderEntireTree(state);
+};
+
+export const updateMessageText = (text) => {
+  state.dialogsPage.textAreaMessage = text;
+  renderEntireTree(state);
+};
+
+export const subscribe = (observer) => {
+  renderEntireTree = observer;
+};
+export default state;
