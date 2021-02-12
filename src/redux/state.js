@@ -70,7 +70,22 @@ let store = {
   getState() {
     return this._state;
   },
-  dispatch(action) {},
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likeCount: 0,
+      };
+
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === "UPDATE-POST-TEXT") {
+      this._state.profilePage.newPostText = action.text;
+      this._callSubscriber(this._state);
+    }
+  },
 };
 
 export default store;
