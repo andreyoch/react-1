@@ -84,6 +84,18 @@ let store = {
     } else if (action.type === "UPDATE-POST-TEXT") {
       this._state.profilePage.newPostText = action.text;
       this._callSubscriber(this._state);
+    } else if (action.type === "ADD-MESSAGE") {
+      const message = {
+        id: 5,
+        message: this._state.dialogsPage.textAreaMessage,
+      };
+      this._state.dialogsPage.messages.push(message);
+      this._state.dialogsPage.textAreaMessage = "";
+
+      this._callSubscriber(this._state);
+    } else if (action.type === "UPDATE-MESSAGE-TEXT") {
+      this._state.dialogsPage.textAreaMessage = action.text;
+      this._callSubscriber(this._state);
     }
   },
 };
