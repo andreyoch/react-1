@@ -33,6 +33,7 @@ let store = {
   _callSubscriber() {
     console.log("State was changed");
   },
+
   addPost() {
     let newPost = {
       id: 5,
@@ -62,12 +63,14 @@ let store = {
     this._state.dialogsPage.textAreaMessage = text;
     this._callSubscriber(this._state);
   },
+
   subscribe(observer) {
     this._callSubscriber = observer;
   },
   getState() {
     return this._state;
   },
+  dispatch(action) {},
 };
 
 export default store;
