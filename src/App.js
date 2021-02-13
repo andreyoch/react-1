@@ -7,6 +7,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import React from "react";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
   return (
@@ -17,12 +18,7 @@ const App = (props) => {
         <div className="app-wrapper-content">
           <Route
             path={"/dialogs"}
-            render={() => (
-              <Dialogs
-                state={props.state.dialogsPage}
-                dispatch={props.dispatch}
-              />
-            )}
+            render={() => <DialogsContainer store={props.store} />}
           />
           <Route
             path={"/profile"}

@@ -6,8 +6,13 @@ const initialState = {
     { id: 1, message: "This is my the newest post", likeCount: 12 },
     { id: 2, message: "I know how to use prop`s!", likeCount: 15 },
     { id: 3, message: "It's my first post", likeCount: 25 },
+    {
+      id: 4,
+      message: "I can use redux and presentational components! ",
+      likeCount: 50,
+    },
   ],
-  newPostText: "cccccccccccccc",
+  newPostText: "default text",
 };
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
