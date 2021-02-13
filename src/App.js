@@ -20,8 +20,7 @@ const App = (props) => {
             render={() => (
               <Dialogs
                 state={props.state.dialogsPage}
-                addMessage={props.addMessage}
-                updateMessageText={props.updateMessageText}
+                dispatch={props.dispatch}
               />
             )}
           />
