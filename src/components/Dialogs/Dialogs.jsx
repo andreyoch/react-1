@@ -5,7 +5,7 @@ import * as React from "react";
 import {
   addMessageActionCreator,
   updateMessageTextActionCreator,
-} from "../../redux/state";
+} from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
   const textAreaId = React.createRef();
