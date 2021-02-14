@@ -7,13 +7,13 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import React from "react";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import StoreContext from "./StoreContext";
 import { store } from "./redux/redux-store";
+import { Provider } from "react-redux";
 
 const App = (props) => {
   return (
     <BrowserRouter>
-      <StoreContext.Provider value={store}>
+      <Provider value={store}>
         <div className="app-wrapper">
           <Header />
           <Navbar state={props.state.navbarPage} />
@@ -24,7 +24,7 @@ const App = (props) => {
             <Route path={"/music"} component={Music} />
           </div>
         </div>
-      </StoreContext.Provider>
+      </Provider>
     </BrowserRouter>
   );
 };

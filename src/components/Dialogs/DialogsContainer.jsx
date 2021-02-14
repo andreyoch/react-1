@@ -5,6 +5,7 @@ import {
 
 import Dialogs from "./Dialogs";
 import StoreContext from "../../StoreContext";
+import { connect } from "react-redux";
 
 const DialogsContainer = () => {
   return (
@@ -33,4 +34,27 @@ const DialogsContainer = () => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    dialogs: state.dialogsPage,
+    messages: state.dialogsPage.messages,
+    textAreaMessage: state.dialogsPage.textAreaMessage,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateMessageText: (text) => {
+      dispatch(updateMessageTextActionCreator(text));
+    },
+    sendMessage: () => {
+      dispatch(addMessageActionCreator());
+    },
+  };
+};
+
+const superDialogsContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dialogs);
 export default DialogsContainer;
