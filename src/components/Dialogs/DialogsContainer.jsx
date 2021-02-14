@@ -4,35 +4,7 @@ import {
 } from "../../redux/dialogs-reducer";
 
 import Dialogs from "./Dialogs";
-import StoreContext from "../../StoreContext";
 import { connect } from "react-redux";
-
-const DialogsContainer = () => {
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        const state = store.getState();
-
-        const onTextAreaChange = (text) => {
-          store.dispatch(updateMessageTextActionCreator(text));
-        };
-
-        const sendMessage = () => {
-          store.dispatch(addMessageActionCreator());
-        };
-        return (
-          <Dialogs
-            updateMessageText={onTextAreaChange}
-            sendMessage={sendMessage}
-            dialogs={state.dialogsPage.dialogs}
-            messages={state.dialogsPage.messages}
-            textAreaMessage={state.dialogsPage.textAreaMessage}
-          />
-        );
-      }}
-    </StoreContext.Consumer>
-  );
-};
 
 const mapStateToProps = (state) => {
   return {
@@ -53,8 +25,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const superDialogsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Dialogs);
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 export default DialogsContainer;
