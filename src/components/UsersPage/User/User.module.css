@@ -1,0 +1,41 @@
+.userBody {
+    font-size: 20px;
+    display: flex;
+    border:5px solid black;
+    background-color: #fff;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+.userLeftBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ .userLeftBlock > img {
+    width: 100px;
+    height: 100px;
+}
+
+ .userRightBlock {
+     align-items: center;
+     display: flex;
+ }
+
+ .nameDescBlock {
+     margin-right: 200px;
+ }
+
+ .userLocation {
+     padding-right: 30px;
+ }
+ .followBtn {
+     margin-bottom: 10px;
+     font-size: 25px;
+ }
+
+ .userRightBlock {
+     display: flex;
+     justify-content: space-around;
+     width: 100%;
+ }

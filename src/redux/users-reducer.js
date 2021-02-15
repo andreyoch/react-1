@@ -4,25 +4,33 @@ const initialState = {
       name: "Dmitry K",
       country: "belarus",
       city: "Minsk",
-      text: "I am looking for job now",
+      desc: "I am looking for job now",
     },
     {
       name: "Svetlana D",
       country: "belarus",
       city: "Minsk",
-      text: "I am so pretty",
+      desc: "I am so pretty",
     },
     {
       name: "Sergei S",
       country: "Ukraine",
       city: "Kiev",
-      text: "I like football!",
+      desc: "I like football!",
     },
     {
       name: "Andrew T",
       country: "USA",
       city: "Philadelphia",
-      text: "I am free to help you to create good video production",
+      desc: "I am free to help you to create good video production",
     },
   ],
 };
+
+const usersReducer = (state = initialState, action) => {
+  return {
+    ...state,
+  };
+};
+
+export default usersReducer;

@@ -1,0 +1,16 @@
+.header {
+  font-size: 40px;
+  text-align: center;
+}
+
+.usersPage {
+  margin: 0 10px;
+
+}
+
+.usersRow {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
