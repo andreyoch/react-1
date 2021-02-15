@@ -7,13 +7,14 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import React from "react";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar />
+        <NavbarContainer />
         <div className="app-wrapper-content">
           <Route path={"/dialogs"} render={() => <DialogsContainer />} />
           <Route path={"/profile"} render={() => <Profile />} />
