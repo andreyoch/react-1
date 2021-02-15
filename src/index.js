@@ -5,19 +5,11 @@ import App from "./App";
 import { store } from "./redux/redux-store";
 import { Provider } from "react-redux";
 
-let renderEntireTree = () => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </Provider>,
-    document.getElementById("root")
-  );
-};
-
-renderEntireTree();
-
-store.subscribe(() => {
-  renderEntireTree();
-});
+ReactDOM.render(
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
+  document.getElementById("root")
+);
