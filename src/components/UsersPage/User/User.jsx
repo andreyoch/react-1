@@ -7,7 +7,9 @@ const User = (props) => {
           src="https://img.icons8.com/plasticine/2x/user-male-circle.png"
           alt="userImage"
         />
-        <button className={s.followBtn}>Follow</button>
+        <button onClick={props.followUnfollow} className={s.followBtn}>
+          {props.followed}
+        </button>
       </div>
       <div className={s.userRightBlock}>
         <div className={s.nameDescBlock}>
