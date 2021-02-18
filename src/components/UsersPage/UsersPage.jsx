@@ -6,13 +6,16 @@ import React from "react";
 class UsersPage extends React.Component {
   componentDidMount() {
     axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
+      )
       .then((response) => {
         this.props.setUsers(response.data.items);
       });
   }
 
   getUserElements = () => {
+    console.log(this.props.users);
     const usersElements = this.props.users.map((user) => (
       <User
         key={user.id}
@@ -28,9 +31,21 @@ class UsersPage extends React.Component {
     ));
     return usersElements;
   };
+  onPageChanged = (pageNumber) => {
+    this.props.changeCurrentPage(pageNumber);
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`
+      )
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+      });
+  };
 
   render() {
-    const pagesCount = this.props.totalUsersCount / this.props.pageSize;
+    const pagesCount = Math.ceil(
+      this.props.totalUsersCount / this.props.pageSize
+    );
     const pages = [];
     for (let i = 1; i <= pagesCount; i++) {
       pages.push(i);
@@ -40,20 +55,14 @@ class UsersPage extends React.Component {
         className={
           pageNumber === this.props.currentPage ? s.selectedPage : s.pageNumber
         }
+        onClick={() => this.onPageChanged(pageNumber)}
       >
         {pageNumber}
       </span>
     ));
     return (
       <div className={s.usersPage}>
-        <div className={s.buttons}>
-          {/*<span>1</span>*/}
-          {/*<span className={s.selectedPage}>2</span>*/}
-          {/*<span>3</span>*/}
-          {/*<span>4</span>*/}
-          {/*<span>5</span>*/}
-          {pagesElements}
-        </div>
+        <div className={s.buttons}>{pagesElements}</div>
         <header className={s.header}>Users</header>
         {this.getUserElements()}
       </div>
