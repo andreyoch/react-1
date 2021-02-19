@@ -2,19 +2,21 @@ import s from "./UsersPage.module.css";
 import User from "./User/User";
 
 const UsersPage = (props) => {
-  const usersElements = props.users.map((user) => (
-    <User
-      key={user.id}
-      name={user.name}
-      followed={user.followed ? "Unfollow" : "Follow"}
-      followUnfollow={
-        user.followed
-          ? () => props.unfollow(user.id)
-          : () => props.follow(user.id)
-      }
-      userAvatar={user.photos.small}
-    />
-  ));
+  const usersElements = props.users.map((user) => {
+    return (
+      <User
+        id={user.id}
+        name={user.name}
+        followed={user.followed ? "Unfollow" : "Follow"}
+        followUnfollow={
+          user.followed
+            ? () => props.unfollow(user.id)
+            : () => props.follow(user.id)
+        }
+        userAvatar={user.photos.small}
+      />
+    );
+  });
 
   const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   const pages = [];
