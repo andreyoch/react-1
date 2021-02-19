@@ -1,7 +1,4 @@
-import {
-  addMessageActionCreator,
-  updateMessageTextActionCreator,
-} from "../../redux/dialogs-reducer";
+import { sendMessage, updateMessageText } from "../../redux/dialogs-reducer";
 
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
@@ -14,16 +11,18 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateMessageText: (text) => {
-      dispatch(updateMessageTextActionCreator(text));
-    },
-    sendMessage: () => {
-      dispatch(addMessageActionCreator());
-    },
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     updateMessageText: (text) => {
+//       dispatch(updateMessageTextActionCreator(text));
+//     },
+//     sendMessage: () => {
+//       dispatch(addMessageActionCreator());
+//     },
+//   };
+// };
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
-export default DialogsContainer;
+export default connect(mapStateToProps, {
+  updateMessageText,
+  sendMessage,
+})(Dialogs);
