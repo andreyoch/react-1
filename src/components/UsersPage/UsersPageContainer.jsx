@@ -6,7 +6,7 @@ import {
   setUsersAC,
   unfollowAC,
 } from "../../redux/users-reducer";
-import UsersPage from "./UsersPage";
+import UsersPageAPIComponent from "./UsersPageAPIComponent";
 
 const mapStateToProps = (state) => {
   return {
@@ -30,5 +30,5 @@ const mapDispatchToProps = (dispatch) => {
 const UsersPageContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(UsersPage);
+)(UsersPageAPIComponent);
 export default UsersPageContainer;
