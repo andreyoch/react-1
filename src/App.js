@@ -8,12 +8,13 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import UsersPageContainer from "./components/UsersPage/UsersPageContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <NavbarContainer />
         <div className="app-wrapper-content">
           <Route path={"/dialogs"} render={() => <DialogsContainer />} />
