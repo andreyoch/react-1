@@ -8,19 +8,18 @@ import {
   unfollow,
 } from "../../redux/users-reducer";
 import React from "react";
-import axios from "axios";
 import UsersPage from "./UsersPage";
 import Preloader from "../common/preloader/Preloader";
+import { usersAPI } from "../../api/api";
 
 class UsersPageContainer extends React.Component {
   componentDidMount() {
     this.props.setIsToggle(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
+
+    usersAPI
+      .getUsers(this.props.pageSize, this.props.currentPage)
+      .then((data) => {
+        this.props.setUsers(data.items);
         this.props.setIsToggle(false);
       });
   }
@@ -28,14 +27,11 @@ class UsersPageContainer extends React.Component {
   onPageChanged = (pageNumber) => {
     this.props.setIsToggle(true);
     this.props.setCurrentPage(pageNumber);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
-        this.props.setIsToggle(false);
-      });
+
+    usersAPI.getUsers(this.props.pageSize, pageNumber).then((data) => {
+      this.props.setUsers(data.items);
+      this.props.setIsToggle(false);
+    });
   };
 
   render() {
